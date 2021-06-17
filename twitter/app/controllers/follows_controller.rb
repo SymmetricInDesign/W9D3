@@ -3,6 +3,7 @@ class FollowsController < ApplicationController
 
   def create
     # simulate latency
+    # debugger
     sleep(1)
 
     @follow = current_user.out_follows.create!(followee_id: params[:user_id])
@@ -16,7 +17,8 @@ class FollowsController < ApplicationController
   def destroy
     # simulate latency
     sleep(1)
-
+    puts("=============")
+    puts(params)
     @follow = current_user.out_follows.find_by(followee_id: params[:user_id])
     @follow.destroy!
 
